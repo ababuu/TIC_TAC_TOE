@@ -1,0 +1,198 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-height: 100vh;
+    background-color: lightslategray;
+}
+
+.container{
+    width: 60%;
+    min-height: 100vh;
+    background-color: linen;
+    
+    
+}
+
+.grid-container{
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    
+    gap: 0px;
+    border: 0px;
+    margin: auto;
+    background-color: lightgray;
+    margin-top: 40px;
+}
+.cell{
+    
+    border: 3px solid black;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+h1{
+    font-size: 50px;
+}
+.cell-00{
+    border: 0px;
+    
+    
+}
+.cell-01{
+    border-bottom: 0px;
+    border-top: 0px;
+    
+    
+}
+.cell-02{
+    border: 0px;
+}
+.cell-10{
+    border-bottom: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    
+}
+.cell-11{
+    border-bottom: 0px;
+}
+.cell-12{
+    border-bottom: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    
+}
+.cell-20{
+    
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    
+}
+.cell-21{
+    
+    
+    border-bottom: 0px;
+    
+}
+.cell-22{
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    
+}
+
+.cell.x,
+.cell.o{
+    cursor: not-allowed;
+}
+.cell.x::before,
+.cell.x::after{
+    background-color: black;
+}
+
+.cell.o::before,
+.cell.o::after{
+    background-color: black;
+}
+
+
+
+.grid-container.x .cell:not(.x):not(.o):hover::before,
+.grid-container.x .cell:not(.x):not(.o):hover::after,
+.grid-container.o .cell:not(.x):not(.o):hover::before,
+.grid-container.o .cell:not(.x):not(.o):hover::after{
+    background-color: rgb(85, 84, 84);
+}
+
+
+.cell.x::before,
+.cell.x::after,
+.grid-container.x .cell:not(.x):not(.o):hover::before,
+.grid-container.x .cell:not(.x):not(.o):hover::after{
+    content: '';
+    width: 13px;
+    height: 90px;
+    position: absolute;
+    
+    
+}
+.cell.x::before,
+.grid-container.x .cell:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+.cell.x::after,
+.grid-container.x .cell:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+.cell.o::before,
+.cell.o::after,
+.grid-container.o .cell:not(.x):not(.o):hover::before,
+.grid-container.o .cell:not(.x):not(.o):hover::after{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.o::before,
+.grid-container.o .cell:not(.x):not(.o):hover::before{
+    width: 90px;
+    height: 90px;
+    
+
+}
+.cell.o::after,
+.grid-container.o .cell:not(.x):not(.o):hover::after{
+    width: 65px;
+    height: 65px;
+    background-color: lightgray;
+
+}
+
+.result{
+    display: none;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .7);
+    
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: white;
+    flex-direction: column;
+
+}
+
+.restart-btn{
+    background-color: white;
+    font-size: 30px;
+    border: 1px solid black;
+    cursor: pointer;
+    
+}
+.restart-btn:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.result.show{
+    display: flex;
+}
+
